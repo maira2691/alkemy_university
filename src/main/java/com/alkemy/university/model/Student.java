@@ -1,6 +1,7 @@
 package com.alkemy.university.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -17,6 +18,9 @@ public class Student {
 
     @OneToOne(mappedBy = "student")
     private Profile profile;
+
+    @OneToMany(mappedBy = "course")
+    private List<Enrollment> courses;
 
     public Long getIdStudent() {
         return idStudent;

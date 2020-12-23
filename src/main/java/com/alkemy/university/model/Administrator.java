@@ -1,6 +1,7 @@
 package com.alkemy.university.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Administrator {
@@ -21,6 +22,12 @@ public class Administrator {
 
     @OneToOne(mappedBy = "administrator")
     private Profile profile;
+
+    @OneToMany(mappedBy = "administrator")
+    private List<Teacher> teachers;
+
+    @OneToMany(mappedBy = "administrator")
+    private List<Course> courses;
 
     public Long getIdAdministrator() {
         return idAdministrator;

@@ -8,6 +8,14 @@ public class Enrollment {
     @EmbeddedId
     private EnrollmentPK id;
 
+    @ManyToOne
+    @JoinColumn(name = "id_student", insertable = false, updatable = false)
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "id_course", insertable = false, updatable = false)
+    private Course course;
+
     public EnrollmentPK getId() {
         return id;
     }

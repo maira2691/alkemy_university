@@ -20,11 +20,11 @@ public class Profile {
     private Role role;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_student", referencedColumnName = "idStudent")
+    @JoinColumn(name = "idStudent", referencedColumnName = "id_student")
     private Student student;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_administrator", referencedColumnName = "idAdministrator")
+    @JoinColumn(name = "idAdministrator", referencedColumnName = "id_administrator")
     private Administrator administrator;
 
     public Long getIdProfile() {
