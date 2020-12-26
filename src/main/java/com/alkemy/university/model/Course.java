@@ -7,7 +7,7 @@ import java.util.List;
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_course")
     private Long idCourse;
 
@@ -29,7 +29,7 @@ public class Course {
     @JoinColumn(name = "id_teacher", insertable = false, updatable = false)
     private Teacher teacher;
 
-    @ManyToOne
+   @ManyToOne
     @JoinColumn(name = "id_course", insertable = false, updatable = false)
     private Administrator administrator;
 

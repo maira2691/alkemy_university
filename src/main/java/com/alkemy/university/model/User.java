@@ -3,12 +3,12 @@ package com.alkemy.university.model;
 import javax.persistence.*;
 
 @Entity
-public class Profile {
+public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_profile")
-    private Long idProfile;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
+    private Long idUser;
 
     private String name;
 
@@ -20,19 +20,19 @@ public class Profile {
     private Role role;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idStudent", referencedColumnName = "id_student")
+    @JoinColumn(name = "id_student")
     private Student student;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idAdministrator", referencedColumnName = "id_administrator")
+    @JoinColumn(name = "id_administrator")
     private Administrator administrator;
 
     public Long getIdProfile() {
-        return idProfile;
+        return idUser;
     }
 
     public void setIdProfile(Long idProfile) {
-        this.idProfile = idProfile;
+        this.idUser = idUser;
     }
 
     public String getName() {

@@ -1,13 +1,13 @@
 package com.alkemy.university.service;
 
-import com.alkemy.university.repository.DAOProfile;
+import com.alkemy.university.repository.DAOUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProfileServiceImpl implements ProfileService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    private DAOProfile profileDAO;
+    private DAOUser profileDAO;
 
 }

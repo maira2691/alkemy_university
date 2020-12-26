@@ -7,7 +7,7 @@ import java.util.List;
 public class Administrator {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_administrator")
     private Long idAdministrator;
 
@@ -17,11 +17,11 @@ public class Administrator {
     @Column(name = "id_teacher")
     private Long idTeacher;
 
-    @Column(name = "id_profile")
-    private Long idProfile;
+    @Column(name = "id_user")
+    private Long idUser;
 
-    @OneToOne(mappedBy = "administrator")
-    private Profile profile;
+   @OneToOne(mappedBy = "administrator")
+    private User user;
 
     @OneToMany(mappedBy = "administrator")
     private List<Teacher> teachers;
@@ -51,13 +51,5 @@ public class Administrator {
 
     public void setIdTeacher(Long idTeacher) {
         this.idTeacher = idTeacher;
-    }
-
-    public Long getIdProfile() {
-        return idProfile;
-    }
-
-    public void setIdProfile(Long idProfile) {
-        this.idProfile = idProfile;
     }
 }

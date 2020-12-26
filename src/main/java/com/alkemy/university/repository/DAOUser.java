@@ -1,9 +1,9 @@
 package com.alkemy.university.repository;
 
-import com.alkemy.university.model.Profile;
+import com.alkemy.university.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DAOProfile extends CrudRepository<Profile, Long> {
+public interface DAOUser extends CrudRepository<User, Long> {
 }

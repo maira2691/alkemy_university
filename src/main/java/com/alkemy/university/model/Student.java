@@ -7,17 +7,17 @@ import java.util.List;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_student")
     private Long idStudent;
 
     private Integer file;
 
-    @Column(name = "id_profile")
-    private Long idProfile;
+    @Column(name = "id_user")
+    private Long idUser;
 
     @OneToOne(mappedBy = "student")
-    private Profile profile;
+    private User user;
 
     @OneToMany(mappedBy = "course")
     private List<Enrollment> courses;
@@ -36,13 +36,5 @@ public class Student {
 
     public void setFile(Integer file) {
         this.file = file;
-    }
-
-    public Long getIdProfile() {
-        return idProfile;
-    }
-
-    public void setIdProfile(Long idProfile) {
-        this.idProfile = idProfile;
     }
 }
