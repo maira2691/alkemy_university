@@ -1,6 +1,8 @@
 package com.alkemy.university.model;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class User {
@@ -17,8 +19,6 @@ public class User {
 
     private String dni;
 
-    private Role role;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_student")
     private Student student;
@@ -27,11 +27,20 @@ public class User {
     @JoinColumn(name = "id_administrator")
     private Administrator administrator;
 
+    public User() {
+    }
+
+    public User(String name, String lastName, String dni) {
+        this.name = name;
+        this.lastName = lastName;
+        this.dni = dni;
+    }
+
     public Long getIdProfile() {
         return idUser;
     }
 
-    public void setIdProfile(Long idProfile) {
+    public void setIdProfile(Long idUser) {
         this.idUser = idUser;
     }
 
@@ -59,11 +68,4 @@ public class User {
         this.dni = dni;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 }

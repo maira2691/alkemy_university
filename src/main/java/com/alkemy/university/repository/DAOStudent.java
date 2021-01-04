@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DAOStudent extends CrudRepository<Student, Long> {
+
+    /*public Student findByDNI(String dni);*/
 }

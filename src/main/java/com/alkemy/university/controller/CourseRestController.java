@@ -23,8 +23,8 @@ public class CourseRestController {
         return courseService.getAll();
     }
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public Optional<Course> getProduct(@PathVariable("id") Long id) {
         return this.courseService.getCourse(id);
-    }
+    }*/
 }

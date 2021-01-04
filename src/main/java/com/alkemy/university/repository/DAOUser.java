@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DAOUser extends CrudRepository<User, Long> {
+
+    public User findByDni(String dni);
 }
