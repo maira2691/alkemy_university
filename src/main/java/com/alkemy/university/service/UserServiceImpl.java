@@ -6,6 +6,8 @@ import com.alkemy.university.repository.DAOUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -14,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     //Buscar estudiante por DNI
     @Override
-    public User findByDni(String dni) {
+    public Optional<User> findByDni(String dni) {
         return userDAO.findByDni(dni);
     }
 }

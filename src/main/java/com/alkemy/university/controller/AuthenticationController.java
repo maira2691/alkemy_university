@@ -12,6 +12,4 @@ public class AuthenticationController {
         return new ModelAndView("login1");
     }
 
-    //Esto es una prueba
-
 }
