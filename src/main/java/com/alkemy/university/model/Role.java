@@ -14,6 +14,9 @@ public class Role {
 
     private String role;
 
+    @OneToMany(mappedBy = "user")
+    private List<UserRole> users;
+
     public Role() {
     }
 

@@ -9,13 +9,13 @@ public class UserRole {
     @EmbeddedId
     private UserRolePK id;
 
-  /*  @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "id_user", insertable = false, updatable = false)
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "id_role", insertable = false, updatable = false)
-    private Role role;*/
+    private Role role;
 
     public UserRolePK getId() {
         return id;

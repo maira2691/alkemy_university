@@ -27,6 +27,9 @@ public class User {
     @JoinColumn(name = "id_administrator")
     private Administrator administrator;
 
+    @OneToMany(mappedBy = "role")
+    private List<UserRole> roles;
+
     public User() {
     }
 
