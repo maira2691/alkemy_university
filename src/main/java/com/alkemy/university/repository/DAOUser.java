@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface DAOUser extends JpaRepository<User, Long> {
 
-    public Optional<User> findByDni(String dni);
+    public Optional<User> findByUsername(String username);
 }

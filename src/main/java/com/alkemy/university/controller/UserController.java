@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/HOLA")
 public class UserController {
 
     @Autowired
@@ -18,7 +18,7 @@ public class UserController {
        @RequestMapping(value = "/loginStudent", method = RequestMethod.GET)
     public ModelAndView handleRequest(Authentication auth) throws Exception {
         ModelAndView model = new ModelAndView("loginStudent");
-        model.addObject("student", userService.findByDni(auth.getName()));
+        model.addObject("student", userService.findByUsername(auth.getName()));
         return model;
     }
 }

@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     //Buscar estudiante por DNI
     @Override
-    public Optional<User> findByDni(String dni) {
-        return userDAO.findByDni(dni);
+    public Optional<User> findByUsername(String username) {
+        return userDAO.findByUsername(username);
     }
 }

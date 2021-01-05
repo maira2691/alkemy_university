@@ -1,7 +1,6 @@
 package com.alkemy.university.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -11,39 +10,36 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Long idUser;
-
     private String name;
 
     @Column(name = "last_name")
     private String lastName;
 
-    private String dni;
+    @Column(name = "dni")
+    private String username;
+    private String password;
+    private Boolean active;
+    private String rol;
 
-    @OneToOne(cascade = CascadeType.ALL)
+   /* @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_student")
-    private Student student;
+    private Student student;*/
 
-    @OneToOne(cascade = CascadeType.ALL)
+   /* @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_administrator")
-    private Administrator administrator;
+    private Administrator administrator;*/
 
-    @OneToMany(mappedBy = "role")
-    private List<UserRole> roles;
+    /*@OneToMany(mappedBy = "role")
+    private List<UserRole> roles;*/
 
     public User() {
     }
 
-    public User(String name, String lastName, String dni) {
-        this.name = name;
-        this.lastName = lastName;
-        this.dni = dni;
-    }
-
-    public Long getIdProfile() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdProfile(Long idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
@@ -63,12 +59,39 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getDni() {
-        return dni;
+    public String getRol() {
+        return rol;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean isActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
 }

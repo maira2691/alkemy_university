@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface UserService {
 
-   Optional<User> findByDni(String name);
+   Optional<User> findByUsername(String username);
 }

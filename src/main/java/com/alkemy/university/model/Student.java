@@ -16,8 +16,8 @@ public class Student {
     @Column(name = "id_user")
     private Long idUser;
 
-    @OneToOne(mappedBy = "student")
-    private User user;
+    /*@OneToOne(mappedBy = "student")
+    private User user;*/
 
     @OneToMany(mappedBy = "course")
     private List<Enrollment> courses;
