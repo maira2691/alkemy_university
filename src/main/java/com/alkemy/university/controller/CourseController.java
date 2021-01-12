@@ -15,50 +15,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/courses")
+public class CourseController {
 
     @Autowired
-    private CourseService courseService;
-
-    @GetMapping("/")
-    public String home() {
-        return "<h1>welcome home</h1>";
-    }
-
-    @GetMapping("/user")
-    public String user() {
-        return "<h1>welcome User</h1>";
-    }
-
-    @GetMapping("/admin")
-    public String admin() {
-        return "<h1>welcome admin</h1>";
-    }
+    CourseService courseService;
 
     //Servicio para ver todas las materias
-    @GetMapping("/materias")
+    @GetMapping("/all")
     @ApiOperation("Get all courses")
     @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Course>> getAll() {
         return new ResponseEntity<>(courseService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/todasMaterias/{id}")
+    //Servicio para ver las materias por id
+    @GetMapping("/{id}")
     @ApiOperation("Search a course with an ID")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Course not found")
     })
     public ResponseEntity<Course> getProduct(@ApiParam(value = "The id of the course", required = true, example = "7")
-                                              @PathVariable("id") Long idCourse) {
+                                             @PathVariable("id") Long idCourse) {
         return courseService.getCourse(idCourse)
                 .map(product -> new ResponseEntity<>(product, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
-
-
 }
