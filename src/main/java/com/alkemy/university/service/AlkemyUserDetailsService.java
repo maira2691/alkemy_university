@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class MyUserDetailsService implements UserDetailsService {
+public class AlkemyUserDetailsService implements UserDetailsService {
 
     @Autowired
     DAOUser userDAO;
@@ -20,7 +20,6 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user =  userDAO.findByUsername(username);
-
         user.orElseThrow(() -> new UsernameNotFoundException("Dni no encontrado"));
         return user.map(MyUserDetails::new).get();
     }

@@ -38,27 +38,4 @@ public class HomeController {
         return "<h1>welcome admin</h1>";
     }
 
-    //Servicio para ver todas las materias
-    @GetMapping("/materias")
-    @ApiOperation("Get all courses")
-    @ApiResponse(code = 200, message = "OK")
-    public ResponseEntity<List<Course>> getAll() {
-        return new ResponseEntity<>(courseService.getAll(), HttpStatus.OK);
-    }
-
-    @GetMapping("/todasMaterias/{id}")
-    @ApiOperation("Search a course with an ID")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 404, message = "Course not found")
-    })
-    public ResponseEntity<Course> getProduct(@ApiParam(value = "The id of the course", required = true, example = "7")
-                                              @PathVariable("id") Long idCourse) {
-        return courseService.getCourse(idCourse)
-                .map(product -> new ResponseEntity<>(product, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-
-
 }

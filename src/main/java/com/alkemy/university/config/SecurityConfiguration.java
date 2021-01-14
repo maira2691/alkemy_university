@@ -2,6 +2,7 @@ package com.alkemy.university.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,13 +24,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                //Está permitiendo acceso /admin al rol Admin
+        http.csrf().disable().authorizeRequests()
+                .antMatchers("/**/auth").permitAll()
+                .anyRequest().authenticated();
+                /*//Está permitiendo acceso /admin al rol Admin
                 .antMatchers("/admin").hasAuthority("ADMIN")
                 //Está permitiendo acceso /user a cualquier rol Admin o User
                 .antMatchers("/user").hasAnyAuthority("ADMIN","USER")
                 .antMatchers("/").permitAll()
-                .and().formLogin();
+                .antMatchers("/courses/**").hasAnyAuthority("ADMIN","USER")
+                .and().formLogin();*/
+    }
+
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Bean

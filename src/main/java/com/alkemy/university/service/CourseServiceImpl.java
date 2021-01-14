@@ -20,8 +20,13 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public Optional<Course> getCourse(Long idCourse) {
+    public Optional<Course> getCourse(Integer idCourse) {
         return courseDAO.findById(idCourse);
+    }
+
+    @Override
+    public Course save(Course course) {
+        return courseDAO.save(course);
     }
 
 

@@ -9,7 +9,7 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_course")
-    private Long idCourse;
+    private Integer idCourse;
 
     private String name;
     private String description;
@@ -23,7 +23,7 @@ public class Course {
     private String schedule;
 
     @Column(name = "id_teacher")
-    private Long idTeacher;
+    private Integer idTeacher;
 
     @ManyToOne
     @JoinColumn(name = "id_teacher", insertable = false, updatable = false)
@@ -36,11 +36,11 @@ public class Course {
     @OneToMany(mappedBy = "student")
     private List<Enrollment> students;
 
-    public Long getIdCourse() {
+    public Integer getIdCourse() {
         return idCourse;
     }
 
-    public void setIdCourse(Long idCourse) {
+    public void setIdCourse(Integer idCourse) {
         this.idCourse = idCourse;
     }
 
@@ -84,11 +84,11 @@ public class Course {
         this.schedule = schedule;
     }
 
-    public Long getIdTeacher() {
+    public Integer getIdTeacher() {
         return idTeacher;
     }
 
-    public void setIdTeacher(Long idTeacher) {
+    public void setIdTeacher(Integer idTeacher) {
         this.idTeacher = idTeacher;
     }
 }

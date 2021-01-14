@@ -1,7 +1,6 @@
 package com.alkemy.university.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class User {
@@ -33,6 +32,11 @@ public class User {
     private List<UserRole> roles;*/
 
     public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public Long getIdUser() {

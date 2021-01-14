@@ -9,15 +9,13 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT})
 @RequestMapping("/courses")
 public class CourseController {
 
@@ -40,9 +38,17 @@ public class CourseController {
             @ApiResponse(code = 404, message = "Course not found")
     })
     public ResponseEntity<Course> getProduct(@ApiParam(value = "The id of the course", required = true, example = "7")
-                                             @PathVariable("id") Long idCourse) {
+                                             @PathVariable("id") Integer idCourse) {
         return courseService.getCourse(idCourse)
                 .map(product -> new ResponseEntity<>(product, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    //Servicio para crear una nueva materia
+    @PostMapping("/save")
+    @ApiOperation("Save a new Course")
+    @ApiResponse(code = 201, message = "Course created")
+    public ResponseEntity<Course> save(@RequestBody Course course) {
+        return new ResponseEntity<>(courseService.save(course), HttpStatus.CREATED);
     }
 }

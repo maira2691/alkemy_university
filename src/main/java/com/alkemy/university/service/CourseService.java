@@ -7,7 +7,9 @@ import java.util.Optional;
 
 public interface CourseService {
 
-    public List<Course> getAll();
+    List<Course> getAll();
 
-    public Optional<Course> getCourse(Long idCourse);
+    Optional<Course> getCourse(Integer idCourse);
+
+    Course save(Course course);
 }
