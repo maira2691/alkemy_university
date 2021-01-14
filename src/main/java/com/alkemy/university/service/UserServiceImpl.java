@@ -1,6 +1,5 @@
 package com.alkemy.university.service;
 
-import com.alkemy.university.model.Student;
 import com.alkemy.university.model.User;
 import com.alkemy.university.repository.DAOUser;
 import org.springframework.beans.factory.annotation.Autowired;
