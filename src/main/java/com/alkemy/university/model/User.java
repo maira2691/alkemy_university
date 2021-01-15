@@ -21,14 +21,6 @@ public class User {
     private Boolean active;
     private String rol;
 
-   /* @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_student")
-    private Student student;*/
-
-   /* @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_administrator")
-    private Administrator administrator;*/
-
     /*@OneToMany(mappedBy = "role")
     private List<UserRole> roles;*/
 

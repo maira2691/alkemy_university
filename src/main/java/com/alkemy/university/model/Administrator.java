@@ -20,13 +20,16 @@ public class Administrator {
     @Column(name = "id_user")
     private Long idUser;
 
-   /*@OneToOne(mappedBy = "administrator")
-    private User user;*/
+    @OneToOne
+    @JoinColumn(name = "id_user", insertable = false, updatable = false)
+    private User user;
 
-    @OneToMany(mappedBy = "administrator")
+    @OneToMany
+    @JoinColumn(name = "id_teacher")
     private List<Teacher> teachers;
 
-    @OneToMany(mappedBy = "administrator")
+    @OneToMany
+    @JoinColumn(name = "id_course")
     private List<Course> courses;
 
     public Long getIdAdministrator() {
@@ -60,4 +63,5 @@ public class Administrator {
     public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
+
 }

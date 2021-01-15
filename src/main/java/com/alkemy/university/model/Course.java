@@ -29,10 +29,6 @@ public class Course {
     @JoinColumn(name = "id_teacher", insertable = false, updatable = false)
     private Teacher teacher;
 
-   @ManyToOne
-    @JoinColumn(name = "id_course", insertable = false, updatable = false)
-    private Administrator administrator;
-
     @OneToMany(mappedBy = "student")
     private List<Enrollment> students;
 
@@ -90,5 +86,21 @@ public class Course {
 
     public void setIdTeacher(Integer idTeacher) {
         this.idTeacher = idTeacher;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public List<Enrollment> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Enrollment> students) {
+        this.students = students;
     }
 }
