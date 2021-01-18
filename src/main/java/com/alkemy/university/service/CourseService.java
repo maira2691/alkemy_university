@@ -12,4 +12,6 @@ public interface CourseService {
     Optional<Course> getCourse(Integer idCourse);
 
     Course save(Course course);
+
+    void deleteById(Integer idCourse);
 }

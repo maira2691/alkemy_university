@@ -29,7 +29,7 @@ public class Administrator {
     private List<Teacher> teachers;
 
     @OneToMany
-    @JoinColumn(name = "id_course")
+    @JoinColumn(name = "id_course", insertable = false, updatable = false)
     private List<Course> courses;
 
     public Long getIdAdministrator() {

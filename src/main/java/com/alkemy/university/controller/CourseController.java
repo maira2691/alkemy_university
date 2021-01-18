@@ -50,4 +50,20 @@ public class CourseController {
     public ResponseEntity<Course> save(@RequestBody Course course) {
         return new ResponseEntity<>(courseService.save(course), HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation("Delete a product by ID")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Product not found")
+    })
+    public ResponseEntity<HttpStatus> deleteCourse(@ApiParam(value = "The id of the product", required = true)
+                                 @PathVariable("id") Integer idCourse) {
+        try {
+            courseService.deleteById(idCourse);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
