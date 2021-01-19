@@ -9,7 +9,7 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_teacher")
-    private Long idTeacher;
+    private Integer idTeacher;
 
     private String name;
 
@@ -19,11 +19,11 @@ public class Teacher {
     private String dni;
     private Boolean active;
 
-    public Long getIdTeacher() {
+    public Integer getIdTeacher() {
         return idTeacher;
     }
 
-    public void setIdTeacher(Long idTeacher) {
+    public void setIdTeacher(Integer idTeacher) {
         this.idTeacher = idTeacher;
     }
 

@@ -35,7 +35,7 @@ public class CourseController {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Course not found")
     })
-    public ResponseEntity<Course> getProduct(@ApiParam(value = "The id of the course", required = true, example = "7")
+    public ResponseEntity<Course> getCourses(@ApiParam(value = "The id of the course", required = true, example = "7")
                                              @PathVariable("id") Integer idCourse) {
         return courseService.getCourse(idCourse)
                 .map(course -> new ResponseEntity<>(course, HttpStatus.OK))
@@ -77,7 +77,7 @@ public class CourseController {
                                    @PathVariable("id") Integer idCourse, @RequestBody Course courseDetails) {
 
         Course course = courseService.getCourse(idCourse)
-                .orElseThrow(() -> new RuntimeException("idCourse"));
+                .orElseThrow(() -> new RuntimeException("Course - NOT FOUND"));
 
         course.setName(courseDetails.getName());
         course.setSchedule(courseDetails.getSchedule());
