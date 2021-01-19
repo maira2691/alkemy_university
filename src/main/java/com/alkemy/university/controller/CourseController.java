@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/courses")
@@ -39,7 +38,7 @@ public class CourseController {
     public ResponseEntity<Course> getProduct(@ApiParam(value = "The id of the course", required = true, example = "7")
                                              @PathVariable("id") Integer idCourse) {
         return courseService.getCourse(idCourse)
-                .map(product -> new ResponseEntity<>(product, HttpStatus.OK))
+                .map(course -> new ResponseEntity<>(course, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
@@ -51,13 +50,14 @@ public class CourseController {
         return new ResponseEntity<>(courseService.save(course), HttpStatus.CREATED);
     }
 
+    //Servicio para eliminar una materia
     @DeleteMapping("/delete/{id}")
-    @ApiOperation("Delete a product by ID")
+    @ApiOperation("Delete a course by ID")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 404, message = "Product not found")
+            @ApiResponse(code = 404, message = "Course not found")
     })
-    public ResponseEntity<HttpStatus> deleteCourse(@ApiParam(value = "The id of the product", required = true)
+    public ResponseEntity<HttpStatus> deleteCourse(@ApiParam(value = "The id of the course", required = true)
                                  @PathVariable("id") Integer idCourse) {
         try {
             courseService.deleteById(idCourse);
@@ -65,5 +65,26 @@ public class CourseController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    //Servicio para modificar una materia
+    @PutMapping("/update/{id}")
+    @ApiOperation("Update a course by ID")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Course not found")})
+    public ResponseEntity<Course> updateCourse(@ApiParam(value = "The id of the course", required = true)
+                                   @PathVariable("id") Integer idCourse, @RequestBody Course courseDetails) {
+
+        Course course = courseService.getCourse(idCourse)
+                .orElseThrow(() -> new RuntimeException("idCourse"));
+
+        course.setName(courseDetails.getName());
+        course.setSchedule(courseDetails.getSchedule());
+        course.setIdTeacher(courseDetails.getIdTeacher());
+        course.setSpotsMax(courseDetails.getSpotsMax());
+
+        Course updatedCourse = courseService.save(course);
+        return new ResponseEntity<>(courseService.save(course), HttpStatus.OK);
     }
 }
