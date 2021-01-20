@@ -35,6 +35,14 @@ public class Student {
         return file;
     }
 
+    public List<Enrollment> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Enrollment> courses) {
+        this.courses = courses;
+    }
+
     public void setFile(Integer file) {
         this.file = file;
     }

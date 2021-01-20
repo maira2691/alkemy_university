@@ -25,6 +25,12 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    public Course getOnlyCourse(Integer idCourse) {
+        Course course = courseDAO.findById(idCourse).orElse(null);
+        return course;
+    }
+
+    @Override
     public Course save(Course course) {
         return courseDAO.save(course);
     }
